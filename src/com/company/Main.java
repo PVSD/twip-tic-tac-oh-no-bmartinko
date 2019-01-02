@@ -4,43 +4,113 @@ public class Main {
 
     public static void main(String[] args) {
         boolean end = false;
-        String board[][] = new String[3][3];
-        boolean victory = false;
+        boolean endB = false;
+        String bank[] = {"0","1","2","3","4","5","6","7","8"};
+        int turn = 1;
 
-        while(victory == false){
+
         System.out.println("Welcome to Tic-Tac-Toe with the computer!");
-        StringBuffer sb = new StringBuffer();
-        for(int i = 0; i < 2; i++){
-            for(int z = 0; z < 2; z++){
-                    sb.append("____|");
 
+        System.out.println("This is the blank board:");
+        System.out.println("\n " + bank[0] + " | " + bank[1] + " | " + bank[2] + " \n " + bank[3] + " | " + bank[4] +
+                " | " + bank[5] +  "\n " + bank[6] + " | " + bank[7] + " | " + bank[8]);
+
+        System.out.println("Hello! Would you like to go first (You are X)? If so, press 1. If you want the computer to go first" +
+                "(You are O), hit anything else");
+        Scanner a = new Scanner(System.in);
+        String d = a.nextLine();
+        if (d.equals("1")){
+            while(end == false && endB == false) {
+
+                if (bank[0].equalsIgnoreCase("x") && bank[1].equalsIgnoreCase("x") && bank[2].equalsIgnoreCase("x")
+                || bank[3].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[5].equalsIgnoreCase("x")
+                || bank[6].equalsIgnoreCase("x") && bank[7].equalsIgnoreCase("x") && bank[8].equalsIgnoreCase("x")
+                || bank[0].equalsIgnoreCase("x") && bank[3].equalsIgnoreCase("x") && bank[6].equalsIgnoreCase("x")
+                || bank[1].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[7].equalsIgnoreCase("x")
+                || bank[2].equalsIgnoreCase("x") && bank[5].equalsIgnoreCase("x") && bank[8].equalsIgnoreCase("x")
+                || bank[0].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[8].equalsIgnoreCase("x")
+                || bank[6].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[2].equalsIgnoreCase("x")) {
+                    end = true;
+                    System.out.println("Congrats! X won!");
+                } else if ((bank[0].equalsIgnoreCase("o") && bank[1].equalsIgnoreCase("o") && bank[2].equalsIgnoreCase("o")
+                        || bank[3].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[5].equalsIgnoreCase("o")
+                        || bank[6].equalsIgnoreCase("o") && bank[7].equalsIgnoreCase("o") && bank[8].equalsIgnoreCase("o")
+                        || bank[0].equalsIgnoreCase("o") && bank[3].equalsIgnoreCase("o") && bank[6].equalsIgnoreCase("o")
+                        || bank[1].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[7].equalsIgnoreCase("o")
+                        || bank[2].equalsIgnoreCase("o") && bank[5].equalsIgnoreCase("o") && bank[8].equalsIgnoreCase("o")
+                        || bank[0].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[8].equalsIgnoreCase("o")
+                        || bank[6].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[2].equalsIgnoreCase("o"))) {
+                    endB = true;
+                    System.out.println("Congrats! O won!");
+
+                }else{
+                    System.out.println("Where would you like to place the X? Please enter a number 0-8");
+                    Scanner playerX = new Scanner(System.in);
+                    int selection = playerX.nextInt();
+                    if (selection > 8 || selection < 0) {
+                        System.out.println("Please enter a valid number");
+                    }
+                    if (bank[selection].equalsIgnoreCase("x") || bank[selection].equalsIgnoreCase("o")) {
+                        System.out.println("Please enter a space that has not been entered");
+                    } else {
+                        bank[selection] = "X";
+                    }
+                    System.out.println("\n " + bank[0] + " | " + bank[1] + " | " + bank[2] + " \n " + bank[3] + " | " + bank[4] +
+                            " | " + bank[5] + "\n " + bank[6] + " | " + bank[7] + " | " + bank[8]);
+                    turn+= 1;
+                    if (turn > 10){
+                        System.out.println("This is a draw!");
+                    }
+
+                }
             }
-            sb.append("____\n");
-        }
-        for(int x = 0; x < 2; x++){
-            sb.append("    |");
-        }
+        }else {
+            while(end == false && endB == false) {
 
-        String s = sb.toString();
-        System.out.println(s);
+                if (bank[0].equalsIgnoreCase("x") && bank[1].equalsIgnoreCase("x") && bank[2].equalsIgnoreCase("x")
+                        || bank[3].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[5].equalsIgnoreCase("x")
+                        || bank[6].equalsIgnoreCase("x") && bank[7].equalsIgnoreCase("x") && bank[8].equalsIgnoreCase("x")
+                        || bank[0].equalsIgnoreCase("x") && bank[3].equalsIgnoreCase("x") && bank[6].equalsIgnoreCase("x")
+                        || bank[1].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[7].equalsIgnoreCase("x")
+                        || bank[2].equalsIgnoreCase("x") && bank[5].equalsIgnoreCase("x") && bank[8].equalsIgnoreCase("x")
+                        || bank[0].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[8].equalsIgnoreCase("x")
+                        || bank[6].equalsIgnoreCase("x") && bank[4].equalsIgnoreCase("x") && bank[2].equalsIgnoreCase("x")) {
+                    end = true;
+                    System.out.println("Congrats! X won!");
+                } else if ((bank[0].equalsIgnoreCase("o") && bank[1].equalsIgnoreCase("o") && bank[2].equalsIgnoreCase("o")
+                        || bank[3].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[5].equalsIgnoreCase("o")
+                        || bank[6].equalsIgnoreCase("o") && bank[7].equalsIgnoreCase("o") && bank[8].equalsIgnoreCase("o")
+                        || bank[0].equalsIgnoreCase("o") && bank[3].equalsIgnoreCase("o") && bank[6].equalsIgnoreCase("o")
+                        || bank[1].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[7].equalsIgnoreCase("o")
+                        || bank[2].equalsIgnoreCase("o") && bank[5].equalsIgnoreCase("o") && bank[8].equalsIgnoreCase("o")
+                        || bank[0].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[8].equalsIgnoreCase("o")
+                        || bank[6].equalsIgnoreCase("o") && bank[4].equalsIgnoreCase("o") && bank[2].equalsIgnoreCase("o"))) {
+                    endB = true;
+                    System.out.println("Congrats! O won!");
 
-        Scanner playerA = new Scanner(System.in);
-        System.out.println("Enter the row you would like to place your x in");
-        int choiceA = playerA.nextInt();
-        if (choiceA > 2 || choiceA < 0) {
-            System.out.println("Please input a number in the correct range (0-2)");
-        }
-        System.out.println("Enter the column you would like to place the x in");
-        int choiceB = playerA.nextInt();
-        if (choiceB > 2 || choiceB < 0) {
-            System.out.println("Please input a number in the correct range (0-2)");
-        }
+                }else{
+                    System.out.println("Where would you like to place the X? Please enter a number 0-8");
+                    Scanner playerX = new Scanner(System.in);
+                    int selection = playerX.nextInt();
+                    if (selection > 8 || selection < 0) {
+                        System.out.println("Please enter a valid number");
+                    }
+                    if (bank[selection].equalsIgnoreCase("x") || bank[selection].equalsIgnoreCase("o")) {
+                        System.out.println("Please enter a space that has not been entered");
+                    } else {
+                        bank[selection] = "O";
+                    }
+                    System.out.println("\n " + bank[0] + " | " + bank[1] + " | " + bank[2] + " \n " + bank[3] + " | " + bank[4] +
+                            " | " + bank[5] + "\n " + bank[6] + " | " + bank[7] + " | " + bank[8]);
+                    turn+= 1;
+                    if (turn > 10){
+                        System.out.println("This is a draw!");
+                    }
+
+                }
+            }      }
+
 
      }
-    if (victory == true){
-        System.out.println("A draw has been found");
-        System.out.println("The Computer has won the game!");
-        System.out.println("You have won the game!");
     }
-    }
-}
+
